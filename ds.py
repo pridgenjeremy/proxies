@@ -10,14 +10,14 @@ def salesforce_ds():
 def translate(txt: str):
   req = client.beta.conversations.start(
     inputs=[
-      {"role": "user", "content": f"Traduzca al español latino:\n\n${txt}"}
+      {"role": "user", "content": f"Convierta a español:\n\n\"{txt}\""}
     ],
     completion_args={
       "temperature": 0.1
     },
     model="ft:ministral-3b-latest:29886b6b:20250727:0cdff515"
   )
-  return req.model_dump()["outputs"][0]
+  return req.json()
 
 
 if __name__ == "__main__":
